@@ -9,38 +9,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
-        --bg-color: #0C0F12;
-        --surface-color: #14181D;
-        --accent-primary: #3A86FF;
-        --text-primary: #E6EDF3;
-        --text-secondary: #9BA4AE;
+        --bg-color: #0c0f12;
+        --surface-color: #14181d;
+        --accent-primary: #3a86ff;
+        --text-primary: #e6edf3;
+        --text-secondary: #9ba4ae;
       }
 
       body {
         background-color: var(--bg-color);
         color: var(--text-primary);
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
       }
 
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Inter Tight', sans-serif;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Inter Tight", sans-serif;
       }
 
-      /* Subtle noise texture - safe version */
+      /* HIGH-QUALITY, SAFE NOISE TEXTURE */
       .bg-noise {
         position: fixed;
         inset: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
         z-index: 50;
-        opacity: 0.03;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.06; /* stronger grain */
+        mix-blend-mode: normal;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 300 300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
       .custom-caret {
@@ -48,20 +59,26 @@
       }
 
       @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
       }
     </style>
 
+    <!-- Import map for React from CDN -->
     <script type="importmap">
-    {
-      "imports": {
-        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-        "react/": "https://aistudiocdn.com/react@^19.2.0/",
-        "react": "https://aistudiocdn.com/react@^19.2.0",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+      {
+        "imports": {
+          "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+        }
       }
-    }
     </script>
 
     <link rel="stylesheet" href="/index.css" />
@@ -71,7 +88,8 @@
     <div id="root"></div>
     <div class="bg-noise"></div>
 
-    <!-- Main entry file -->
+    <!-- Vite entrypoint -->
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
+
